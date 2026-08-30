@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react'
 const initial = {
   name: '',
   phone: '',
+  email: '',
   date: '',
   time: '',
   duration: '',
   interest: '',
+  lead: '',
   whatDoYouThink: '',
   comments: '',
 }
@@ -70,6 +72,9 @@ export default function VisitorForm({ onSave, editing, onCancelEdit }) {
       <label htmlFor="phone">Phone Number</label>
       <input id="phone" type="tel" value={form.phone} onChange={(e) => set('phone', e.target.value)} placeholder="(555) 123-4567" />
 
+      <label htmlFor="email">Email Address</label>
+      <input id="email" type="email" value={form.email} onChange={(e) => set('email', e.target.value)} placeholder="name@example.com" />
+
       <div className="row">
         <div className="col">
           <label htmlFor="date">Date</label>
@@ -100,6 +105,15 @@ export default function VisitorForm({ onSave, editing, onCancelEdit }) {
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
+          </select>
+        </div>
+        <div className="col">
+          <label htmlFor="lead">Lead Status</label>
+          <select id="lead" value={form.lead} onChange={(e) => set('lead', e.target.value)}>
+            <option value="">Select…</option>
+            <option value="cold">Cold</option>
+            <option value="warming">Warming up</option>
+            <option value="hot">Hot</option>
           </select>
         </div>
       </div>

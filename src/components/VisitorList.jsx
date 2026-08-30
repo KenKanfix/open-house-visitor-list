@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { DURATION_LABELS, INTEREST_LABELS } from '../lib/constants'
+import { DURATION_LABELS, INTEREST_LABELS, LEAD_LABELS, lastFollowUp } from '../lib/constants'
 
 function orderByDate(records) {
   const order = {}
@@ -18,12 +18,20 @@ function VisitorCard({ record, onSelect }) {
   const parts = []
   if (record.date) parts.push(record.date)
   if (record.phone) parts.push(record.phone)
+  if (record.email) parts.push(record.email)
   if (record.duration) parts.push(DURATION_LABELS[record.duration] || record.duration)
+
+  const last = lastFollowUp(record)
 
   return (
     <li className="visitor-card" onClick={() => onSelect(record)}>
       <div className="name">
         {record.name || 'Unnamed'}
+        {record.lead && (
+          <span className={'badge lead ' + record.lead}>
+            {LEAD_LABELS[record.lead] || record.lead}
+          </span>
+        )}
         {record.interest && (
           <span className={'badge ' + record.interest}>
             {INTEREST_LABELS[record.interest] || record.interest}
@@ -31,6 +39,7 @@ function VisitorCard({ record, onSelect }) {
         )}
       </div>
       {parts.length > 0 && <div className="meta">{parts.join(' · ')}</div>}
+      {last && <div className="quote">Follow-up · {last.date}: “{last.note}”</div>}
       {record.whatDoYouThink && <div className="quote">“{record.whatDoYouThink}”</div>}
     </li>
   )
@@ -52,7 +61,8 @@ export default function VisitorList({ records, onSelect, onDelete, onEdit }) {
     return sorted.filter(
       (r) =>
         (r.name || '').toLowerCase().includes(t) ||
-        (r.phone || '').toLowerCase().includes(t)
+        (r.phone || '').toLowerCase().includes(t) ||
+        (r.email || '').toLowerCase().includes(t)
     )
   }, [sorted, term])
 

@@ -33,6 +33,16 @@ export default function App() {
     setRecords(await getAllVisitors())
   }
 
+  async function handleAddFollowUp(id, entry) {
+    const record = records.find((r) => r.id === id)
+    if (!record) return
+    const updated = { ...record, followUps: [...(record.followUps || []), entry] }
+    await saveVisitor(updated)
+    const all = await getAllVisitors()
+    setRecords(all)
+    setSelected(all.find((r) => r.id === id) || null)
+  }
+
   async function requestEdit(record) {
     setSelected(null)
     setEditing(record)
@@ -86,6 +96,7 @@ export default function App() {
             handleDelete(id)
             setSelected(null)
           }}
+          onAddFollowUp={handleAddFollowUp}
         />
       )}
     </>

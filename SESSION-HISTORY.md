@@ -8,6 +8,13 @@ as a standalone installable PWA on GitHub Pages under KenKanfix's account,
 for full offline use on the user's phone.
 
 ## Completed
+- Added an Email Address field to the visitor form, list, detail view, search,
+  and CSV export.
+- Added a Lead Status field (Cold / Warming / Hot) shown as a colored badge on
+  the list and exported to CSV.
+- Added a Follow-Up log per visitor (date + note). Follow-ups are added from the
+  detail modal, stored in IndexedDB, shown on the list card (most recent), and
+  exported to CSV.
 - React + Vite + vite-plugin-pwa project scaffolded and ported from a plain
   HTML app. Builds successfully (`npm run build`).
 - PWA manifest set: `display: standalone`, icons at `public/icons/`

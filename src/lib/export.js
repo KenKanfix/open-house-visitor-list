@@ -1,14 +1,17 @@
-import { DURATION_LABELS, INTEREST_LABELS } from './constants'
+import { DURATION_LABELS, INTEREST_LABELS, LEAD_LABELS } from './constants'
 
 const HEADERS = [
   'Name',
   'Phone',
+  'Email',
   'Date',
   'Arrival Time',
   'Duration',
   'Interest',
+  'Lead Status',
   'WhatDoYouThink',
   'Notes',
+  'FollowUps',
 ]
 
 function esc(v) {
@@ -23,12 +26,15 @@ export function exportCSV(records) {
       [
         r.name,
         r.phone,
+        r.email,
         r.date,
         r.time,
         r.duration ? DURATION_LABELS[r.duration] || r.duration : '',
         r.interest ? INTEREST_LABELS[r.interest] || r.interest : '',
+        r.lead ? LEAD_LABELS[r.lead] || r.lead : '',
         r.whatDoYouThink,
         r.comments,
+        (r.followUps || []).map((u) => `${u.date}: ${u.note}`).join(' | '),
       ]
         .map(esc)
         .join(',')
