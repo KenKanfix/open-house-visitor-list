@@ -2,6 +2,7 @@ import { DURATION_LABELS, INTEREST_LABELS, LEAD_LABELS } from './constants'
 
 const HEADERS = [
   'Name',
+  'Property Address',
   'Phone',
   'Email',
   'Date',
@@ -25,6 +26,7 @@ export function exportCSV(records) {
     lines.push(
       [
         r.name,
+        r.property,
         r.phone,
         r.email,
         r.date,

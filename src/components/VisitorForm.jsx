@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 const initial = {
   name: '',
+  property: '',
   phone: '',
   email: '',
   date: '',
@@ -68,6 +69,9 @@ export default function VisitorForm({ onSave, editing, onCancelEdit }) {
 
       <label htmlFor="name">Name</label>
       <input id="name" value={form.name} onChange={(e) => set('name', e.target.value)} placeholder="Full name" required />
+
+      <label htmlFor="property">Property Address</label>
+      <input id="property" value={form.property} onChange={(e) => set('property', e.target.value)} placeholder="123 Main St, Springfield" />
 
       <label htmlFor="phone">Phone Number</label>
       <input id="phone" type="tel" value={form.phone} onChange={(e) => set('phone', e.target.value)} placeholder="(555) 123-4567" />

@@ -17,6 +17,7 @@ function orderByDate(records) {
 function VisitorCard({ record, onSelect }) {
   const parts = []
   if (record.date) parts.push(record.date)
+  if (record.property) parts.push(record.property)
   if (record.phone) parts.push(record.phone)
   if (record.email) parts.push(record.email)
   if (record.duration) parts.push(DURATION_LABELS[record.duration] || record.duration)
@@ -62,7 +63,8 @@ export default function VisitorList({ records, onSelect, onDelete, onEdit }) {
       (r) =>
         (r.name || '').toLowerCase().includes(t) ||
         (r.phone || '').toLowerCase().includes(t) ||
-        (r.email || '').toLowerCase().includes(t)
+        (r.email || '').toLowerCase().includes(t) ||
+        (r.property || '').toLowerCase().includes(t)
     )
   }, [sorted, term])
 

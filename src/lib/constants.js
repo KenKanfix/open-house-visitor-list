@@ -12,6 +12,7 @@ export const LEAD_LABELS = { cold: 'Cold', warming: 'Warming', hot: 'Hot' }
 
 export const FIELD_DEFS = [
   { key: 'name', label: 'Name' },
+  { key: 'property', label: 'Property Address' },
   { key: 'phone', label: 'Phone' },
   { key: 'email', label: 'Email' },
   { key: 'date', label: 'Date' },

@@ -8,6 +8,8 @@ as a standalone installable PWA on GitHub Pages under KenKanfix's account,
 for full offline use on the user's phone.
 
 ## Completed
+- Added a Property Address field to the visitor form, list, detail view,
+  search, and CSV export (supports hosting opens for multiple addresses).
 - Added an Email Address field to the visitor form, list, detail view, search,
   and CSV export.
 - Added a Lead Status field (Cold / Warming / Hot) shown as a colored badge on
