@@ -26,6 +26,7 @@ for full offline use on the user's phone.
 - GitHub Pages enabled via `POST /repos/.../pages` with `build_type=workflow`.
 - Deploy workflow re-run succeeded (build + deploy jobs, ~15s + ~8s).
 - Site live at `https://kenkanfix.github.io/open-house-visitor-list/` (HTTP 200).
+- `SESSION-HISTORY.md` committed (`Add session history`, 73fe808) and pushed.
 
 ## Key Files
 - `vite.config.js` — Vite + PWA config, base path, icons.
